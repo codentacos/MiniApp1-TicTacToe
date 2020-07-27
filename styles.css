@@ -1,0 +1,25 @@
+body {
+  height: 100vh;
+  width: 100%;
+}
+
+table {
+  border: 1px solid black;
+  border-collapse: collapse;
+  height: 500px;
+  width: 500px;
+}
+
+td {
+  border: 1px solid black;
+}
+
+.x-class {
+  background-image: url('./assets/x.png');
+  background-size: cover;
+}
+
+.o-class {
+  background-image: url('./assets/o.png');
+  background-size: cover;
+}
