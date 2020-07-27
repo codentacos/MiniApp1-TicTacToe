@@ -3,25 +3,30 @@
 //----------------------------------------------//
 // MODEL - HANDLES DATA AND STATE OF GAME
 //----------------------------------------------//
+const td = document.getElementsByTagName('td');
+const resetbtn = document.getElementsByClassName('reset')[0];
 let currentMove = 'x-class';
-// first move is always X
-// alternate player icon each turn
 // detect win or tie and display message
 
+// alternates player 
 let handleTurn = () => {
   if (currentMove === 'x-class') {
     currentMove = 'o-class';
   } else {
     currentMove = 'x-class';
   }
-  
+}
+
+let reset = () => {
+  currentMove = 'x-class';
+  for (var i = 0; i < td.length; i++) {
+    td[i].classList.value = '';
+  }
 }
 
 //----------------------------------------------//
 // CONTROLLER - HANDLES USER INTERACTIONS
 //----------------------------------------------//
-
-const td = document.getElementsByTagName('td');
 
 // add click events to each square
 for (let i = 0; i < td.length; i++) {
@@ -31,7 +36,11 @@ for (let i = 0; i < td.length; i++) {
       event.currentTarget.classList.add(currentMove);
       handleTurn();
     }
-    
   });
 }
 
+
+// reset game, clears all classes
+resetbtn.addEventListener('click', () => {
+  reset();
+});
