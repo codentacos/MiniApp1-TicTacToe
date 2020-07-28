@@ -1,4 +1,3 @@
-// must have reset button
 
 //----------------------------------------------//
 // MODEL - HANDLES DATA AND STATE OF GAME
@@ -8,9 +7,6 @@ const table = document.getElementsByTagName('table')[0];
 const resetbtn = document.getElementsByClassName('reset')[0];
 let currentMove = 'x-class';
 let winner = false;
-let xMoves = [];
-let oMoves = [];
-// detect win or tie and display message
 
 // alternates player 
 let handleTurn = () => {
@@ -24,8 +20,6 @@ let handleTurn = () => {
 let reset = () => {
   currentMove = 'x-class';
   winner = false;
-  xMoves = [];
-  oMoves = [];
   for (let i = 0; i < td.length; i++) {
     td[i].classList.value = '';
   }
@@ -145,13 +139,6 @@ table.addEventListener('click', (event) => {
     if (!winner) {
       if (event.target.classList.value === '') {
         event.target.classList.add(currentMove);
-
-        // push to array to track squares occupied by each player
-        if (currentMove === 'x-class') {
-          xMoves.push(Number(event.currentTarget.id));
-        } else {
-          oMoves.push(Number(event.currentTarget.id));
-        }
       
         // check for winners and tie games
         if (winnerCheckX()) {
