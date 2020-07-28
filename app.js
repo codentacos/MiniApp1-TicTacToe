@@ -5,7 +5,12 @@
 const td = document.getElementsByTagName('td');
 const table = document.getElementsByTagName('table')[0];
 const resetbtn = document.getElementsByClassName('reset')[0];
+const xWins = document.getElementById('x-wins');
+const oWins = document.getElementById('o-wins');
 let currentMove = 'x-class';
+let playerWon = null;
+let winCountX = 0;
+let winCountO = 0;
 let winner = false;
 
 // alternates player 
@@ -18,8 +23,13 @@ let handleTurn = () => {
 }
 
 let reset = () => {
-  currentMove = 'x-class';
+  if (playerWon === 'x') {
+    currentMove = 'x-class';
+  } else {
+    currentMove = 'o-class';
+  }
   winner = false;
+  playerWon = null;
   for (let i = 0; i < td.length; i++) {
     td[i].classList.value = '';
   }
@@ -135,18 +145,23 @@ let checkTie = () => {
 table.addEventListener('click', (event) => {
   // adds the current players move to the board
   // fix ability to add move to whole table instead of just TD elements
-  console.log(event.target);
+  // console.log(event.target);
     if (!winner) {
       if (event.target.classList.value === '') {
         event.target.classList.add(currentMove);
       
         // check for winners and tie games
         if (winnerCheckX()) {
+          playerWon = 'x';
+          winCountX++;
+          xWins.textContent = 'Player X Wins: ' + winCountX;
           alert('Player X Wins!!!');
         } else if (winnerCheckO()) {
+          playerWon = 'o';
+          winCountO++;
+          oWins.textContent = 'Player O Wins: ' + winCountO;
           alert('Player O Wins!!!');
         }
-        
         
         if (checkTie() && !winner) {
           alert('The game ended in a Tie!');
