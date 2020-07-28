@@ -8,26 +8,30 @@
 </head>
 <body>
   <!-- Game board will be a table -->
-  <table>
-    <tr>
-      <td id='1'></td>
-      <td id='2'></td>
-      <td id='3'></td>
-    </tr>
-    <tr>
-      <td id='4'></td>
-      <td id='5'></td>
-      <td id='6'></td>
-    </tr>
-    <tr>
-      <td id='7'></td>
-      <td id='8'></td>
-      <td id='9'></td>
-    </tr>
-  </table>
-  <div><span id='x-wins'>Player X Wins: 0</span></div>
-  <div><span id='o-wins'>Player O Wins: 0</span></div>
-  <button type="button" class='reset'>Reset</button>
+  <div class="container">
+    <table>
+      <tr>
+        <td id='1'></td>
+        <td id='2'></td>
+        <td id='3'></td>
+      </tr>
+      <tr>
+        <td id='4'></td>
+        <td id='5'></td>
+        <td id='6'></td>
+      </tr>
+      <tr>
+        <td id='7'></td>
+        <td id='8'></td>
+        <td id='9'></td>
+      </tr>
+    </table>
+    <div class="scores">
+      <p id='x-wins'>Player X Wins: 0</p>
+      <p id='o-wins'>Player O Wins: 0</p>
+    </div>
+    <button type="button" class='reset'>Reset</button>
+  </div>
   
   <script src="app.js"></script>
 </body>
